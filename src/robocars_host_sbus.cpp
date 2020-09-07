@@ -274,12 +274,12 @@ void SBusBridge::armBridgeCallback(const std_msgs::Bool::ConstPtr& msg) {
 
 bool SBusBridge::loadParameters() {
 
-  if (!nh_.hasParam("port_name")) {
+  if (!pnh_.hasParam("port_name")) {
        ROS_INFO("[%s] Missing configuration port_name", pnh_.getNamespace().c_str());
   }
-  nh_.getParam("port_name",port_name_);
-  nh_.getParam("enable_receiving_sbus_messages",enable_receiving_sbus_messages_);
-  nh_.getParam("rc_timeout",rc_timeout_);
+  pnh_.getParam("port_name",port_name_);
+  pnh_.getParam("enable_receiving_sbus_messages",enable_receiving_sbus_messages_);
+  pnh_.getParam("rc_timeout",rc_timeout_);
     
   ROS_INFO("[%s] Configured port %s", pnh_.getNamespace().c_str(), port_name_.c_str());
 
