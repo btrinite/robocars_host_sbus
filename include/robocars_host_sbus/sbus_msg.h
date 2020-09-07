@@ -4,7 +4,7 @@
 
 #include "robocars_host_sbus/SbusRosMessage.h"
 
-namespace sbus_bridge {
+namespace robocars_host_sbus {
 
 enum class ControlMode { NONE, ATTITUDE, BODY_RATES };
 
@@ -33,10 +33,10 @@ struct SBusMsg {
   bool failsafe;
 
   SBusMsg();
-  SBusMsg(const sbus_bridge::SbusRosMessage& sbus_ros_msg);
+  SBusMsg(const robocars_host_sbus::SbusRosMessage& sbus_ros_msg);
   virtual ~SBusMsg();
 
-  sbus_bridge::SbusRosMessage toRosMessage() const;
+  robocars_host_sbus::SbusRosMessage toRosMessage() const;
 
   void limitAllChannelsFeasible();
   void limitSbusChannelFeasible(const int channel_idx);
@@ -58,4 +58,4 @@ struct SBusMsg {
   ControlMode getControlMode() const;
 };
 #pragma pack(pop)
-}  // namespace sbus_bridge
+}  // namespace 

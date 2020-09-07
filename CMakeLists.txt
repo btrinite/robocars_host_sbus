@@ -12,7 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   robocars_msgs
-  # message_generation
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -69,10 +69,11 @@ add_message_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   geometry_msgs#   mavros_msgs#   std_msgs
-# )
+ generate_messages(
+   DEPENDENCIES
+   std_msgs
+   robocars_msgs
+ )
 
  #generate_messages(
  #  DEPENDENCIES
@@ -144,7 +145,7 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 
-add_executable(robocars_host_sbus src/robocars_host_sbus.cpp src/sbus_serial_port.cpp)
+add_executable(robocars_host_sbus src/robocars_host_sbus.cpp src/sbus_serial_port.cpp src/sbus_msg.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

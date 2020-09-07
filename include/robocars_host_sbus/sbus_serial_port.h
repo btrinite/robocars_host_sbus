@@ -3,9 +3,9 @@
 #include <atomic>
 #include <thread>
 
-#include "robocars_host_sbus/sbus_msg.h"
+#include "sbus_msg.h"
 
-namespace sbus_bridge {
+namespace robocars_host_sbus {
 
 class SBusSerialPort {
  public:
@@ -25,7 +25,7 @@ class SBusSerialPort {
 
   void transmitSerialSBusMessage(const SBusMsg& sbus_msg) const;
   virtual void handleReceivedSbusMessage(
-      const sbus_bridge::SBusMsg& received_sbus_msg) = 0;
+      const robocars_host_sbus::SBusMsg& received_sbus_msg) = 0;
 
  private:
   static constexpr int kSbusFrameLength_ = 25;
@@ -35,7 +35,7 @@ class SBusSerialPort {
 
   bool configureSerialPortForSBus() const;
   void serialPortReceiveThread();
-  sbus_bridge::SBusMsg parseSbusMessage(
+  robocars_host_sbus::SBusMsg parseSbusMessage(
       uint8_t sbus_msg_bytes[kSbusFrameLength_]) const;
 
   std::thread receiver_thread_;
@@ -44,4 +44,4 @@ class SBusSerialPort {
   int serial_port_fd_;
 };
 
-}  // namespace sbus_bridge
+}  // namespace 

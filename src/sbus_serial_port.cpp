@@ -1,4 +1,4 @@
-#include "robocars_host_sbus/sbus_serial_port.h"
+#include "sbus_serial_port.h"
 
 #include <asm/ioctls.h>
 #include <asm/termbits.h>
@@ -11,7 +11,7 @@
 
 #include <ros/ros.h>
 
-namespace sbus_bridge {
+namespace robocars_host_sbus {
 
 SBusSerialPort::SBusSerialPort()
     : receiver_thread_(),
@@ -399,4 +399,4 @@ SBusMsg SBusSerialPort::parseSbusMessage(
   return sbus_msg;
 }
 
-}  // namespace sbus_bridge
+}  // namespace 
