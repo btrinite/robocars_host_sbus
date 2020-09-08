@@ -17,7 +17,7 @@ SBusBridge::SBusBridge(const ros::NodeHandle& nh, const ros::NodeHandle& pnh)
   // Publishers
   if (enable_receiving_sbus_messages_) {
     received_sbus_msg_pub_ =
-        nh_.advertise<robocars_host_sbus::SbusRosMessage>("received_sbus_message", 1);
+        nh_.advertise<robocars_msgs::robocars_radio_channels>("/radio_channels", 1);
   }
 
   // Subscribers
