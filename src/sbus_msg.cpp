@@ -14,7 +14,7 @@ SBusMsg::SBusMsg()
   }
 }
 
-SBusMsg::SBusMsg(const robocars_host_sbus::SbusRosMessage& sbus_ros_msg) {
+SBusMsg::SBusMsg(const robocars_msgs::robocars_radio_channels& sbus_ros_msg) {
   timestamp = sbus_ros_msg.header.stamp;
   for (uint8_t i; i < kNChannels; i++) {
     channels[i] = sbus_ros_msg.channels[i];
@@ -27,8 +27,8 @@ SBusMsg::SBusMsg(const robocars_host_sbus::SbusRosMessage& sbus_ros_msg) {
 
 SBusMsg::~SBusMsg() {}
 
-robocars_host_sbus::SbusRosMessage SBusMsg::toRosMessage() const {
-  robocars_host_sbus::SbusRosMessage sbus_ros_msg;
+robocars_msgs::robocars_radio_channels SBusMsg::toRosMessage() const {
+  robocars_msgs::robocars_radio_channels sbus_ros_msg;
   sbus_ros_msg.header.stamp = timestamp;
   for (uint8_t i; i < kNChannels; i++) {
     sbus_ros_msg.channels[i] = channels[i];

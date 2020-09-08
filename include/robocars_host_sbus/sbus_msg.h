@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-#include "robocars_host_sbus/SbusRosMessage.h"
+#include <robocars_msgs/robocars_radio_channels.h>
 
 namespace robocars_host_sbus {
 
@@ -33,10 +33,10 @@ struct SBusMsg {
   bool failsafe;
 
   SBusMsg();
-  SBusMsg(const robocars_host_sbus::SbusRosMessage& sbus_ros_msg);
+  SBusMsg(const robocars_msgs::robocars_radio_channels& sbus_ros_msg);
   virtual ~SBusMsg();
 
-  robocars_host_sbus::SbusRosMessage toRosMessage() const;
+  robocars_msgs::robocars_radio_channels toRosMessage() const;
 
   void limitAllChannelsFeasible();
   void limitSbusChannelFeasible(const int channel_idx);

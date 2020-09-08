@@ -24,14 +24,8 @@ class SBusBridge : public SBusSerialPort {
   virtual ~SBusBridge();
 
  private:
-  void watchdogThread();
 
   void handleReceivedSbusMessage(const SBusMsg& received_sbus_msg) override;
-  void sendSBusMessageToSerialPort(const SBusMsg& sbus_msg);
-
-  void setBridgeState(const BridgeState& desired_bridge_state);
-
-  void armBridgeCallback(const std_msgs::Bool::ConstPtr& msg);
 
   bool loadParameters();
 
@@ -55,31 +49,11 @@ class SBusBridge : public SBusSerialPort {
 
   // Subscribers
 
-  // Timer
-  ros::Timer low_level_feedback_pub_timer_;
-
-  // Watchdog
-  std::thread watchdog_thread_;
-  std::atomic_bool stop_watchdog_thread_;
-  ros::Time time_last_rc_msg_received_;
-  ros::Time time_last_sbus_msg_sent_;
-
-  BridgeState bridge_state_;
-  int arming_counter_;
-
-  // Safety flags
-  bool bridge_armed_;
-  bool rc_was_disarmed_once_;
-
   std::atomic_bool destructor_invoked_;
 
   // Parameters
   std::string port_name_;
   bool enable_receiving_sbus_messages_;
-
-  double rc_timeout_;
-
-  static constexpr int kSmoothingFailRepetitions_ = 5;
 
 };
 

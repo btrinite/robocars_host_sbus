@@ -1,5 +1,2 @@
 port_name: /dev/ttyS1
 enable_receiving_sbus_messages: true
-# set in the 'flight_controller'!)
-rc_timeout: 0.1 # [s]
-
